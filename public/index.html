@@ -126,7 +126,6 @@
 	
 	var copyTextareaBtn = document.querySelector('.room-id-label');
 	
- var hideK = document.getElementById('room-id');
 	
 copyTextareaBtn.addEventListener('click', function(event) {
   var copyTextarea = document.querySelector('.room-id');
@@ -143,9 +142,7 @@ copyTextareaBtn.addEventListener('click', function(event) {
 
 		OcultarDivCopiadoTicTacID();
   
-hideK.onfocus = function(){
-  hideKeyboard();
-};
+OcultarKeyboard();
 
 
   } catch (err) {
@@ -155,7 +152,13 @@ hideK.onfocus = function(){
 
 	//OCULTAR KEYBOARD MOVIL ANDROID e iOS
 
+	function OcultarKeyboard(){
+		
+	 var hideK = document.getElementById('room-id');
 
+	hideK.onfocus = function(){
+  hideKeyboard();
+};
 
 function hideKeyboard() {
   //this set timeout 
@@ -177,7 +180,8 @@ function hideKeyboard() {
   field.focus();
     }, 50);
 }
-	
+
+	}
 	
 	//OCULTAR KEYBOARD MOVIL ANDROID e iOS
 
