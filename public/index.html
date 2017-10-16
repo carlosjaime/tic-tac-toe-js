@@ -125,7 +125,9 @@
     document.getElementById('divcopiado').style.display = 'none';
 	
 	var copyTextareaBtn = document.querySelector('.room-id-label');
-
+	
+ var hideK = document.getElementById('room-id');
+	
 copyTextareaBtn.addEventListener('click', function(event) {
   var copyTextarea = document.querySelector('.room-id');
   copyTextarea.select();
@@ -139,9 +141,9 @@ copyTextareaBtn.addEventListener('click', function(event) {
 
     document.getElementById('divcopiado').style.display = 'inline';
 
-
-   var hide = document.getElementById('room-id');
-hide.onfocus = function(){
+		OcultarDivCopiadoTicTacID();
+  
+hideK.onfocus = function(){
   hideKeyboard();
 };
 
