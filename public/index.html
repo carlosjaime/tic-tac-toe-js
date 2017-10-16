@@ -31,8 +31,40 @@
 	<link href="img/startup-1242x2148.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" rel="apple-touch-startup-image">
 	<link href="img/startup-750x1294.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
 	<link href="img/startup-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+
+<style type="text/css">
+	
+
+.alert-box {
+  border-style: solid;
+  border-width: 1px;
+  display: block;
+  width: 100%;
+  font-weight: normal;
+  margin-bottom: 1.25rem;
+  position: absolute;
+  top: 0;
+  padding: 0.875rem 1.5rem 0.875rem 0.875rem;
+  font-size: 0.8125rem;
+  background-color: #008cba;
+  border-color: #0078a0;
+  color: white;
+  box-shadow: 0px 1px 5px 0 darkslategrey;
+  z-index: 1;
+}
+.alert-box.success {
+  background-color: #43ac6a;
+  border-color: #3a945b;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+}
+
+</style>
+
 </head>
 <body>
+<div class="alert-box success" id="divcopiado" >TIC-TAC ID ALMACENADO</div>
 <div class="container">
 	<header class="header">
 		<ul class="turn-display js-players-display">
@@ -71,7 +103,7 @@
 			<span class="pop-over-close">&times;</span>
 		</div>
 		<form id="refresh-game-form" class="group" action="/">
-			<label for="room-id" class="room-id-label">TICTAC ID</label><input type="text" id="room-id" class="room-id">
+			<input type="button" for="room-id" class="room-id-label" style="color:#FFFFFF;background-color:#48BC4C;" value="ENVIAR MI TICTAC ID"></input><br/><input type="text" id="room-id" class="room-id">
 		</form>
 		
 	</footer>
@@ -86,6 +118,68 @@
 
   ga('create', 'UA-49815710-3', 'auto');
   ga('send', 'pageview');
+</script>
+<script type="text/javascript">
+
+
+    document.getElementById('divcopiado').style.display = 'none';
+	
+	var copyTextareaBtn = document.querySelector('.room-id-label');
+
+copyTextareaBtn.addEventListener('click', function(event) {
+  var copyTextarea = document.querySelector('.room-id');
+  copyTextarea.select();
+
+  try {
+    var successful = document.execCommand('copy');
+    var msg = successful ? 'successful' : 'unsuccessful';
+    console.log('Copying text command was ' + msg);
+
+    fadeIn(el);
+
+    document.getElementById('divcopiado').style.display = 'inline';
+
+
+    OcultarDivCopiadoTicTacID();
+
+
+  } catch (err) {
+    console.log('Oops, unable to copy');
+  }
+});
+
+
+
+var el = document.getElementById("divcopiado");
+
+function fadeIn(el) {
+  el.style.opacity = 0;
+
+  
+  var tick = function() {
+    el.style.opacity = +el.style.opacity + 0.01;
+    
+
+    if (+el.style.opacity < 1) {
+      (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+    }
+  };
+
+  tick();
+}
+
+function OcultarDivCopiadoTicTacID(){
+
+
+setTimeout(function(){
+
+    document.getElementById('divcopiado').style.display = 'none';
+
+
+	},2300);
+
+}
+
 </script>
 </body>
 </html>
