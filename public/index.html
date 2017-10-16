@@ -140,7 +140,10 @@ copyTextareaBtn.addEventListener('click', function(event) {
     document.getElementById('divcopiado').style.display = 'inline';
 
 
-    OcultarDivCopiadoTicTacID();
+   var hide = document.getElementById('room-id');
+hide.onfocus = function(){
+  hideKeyboard();
+};
 
 
   } catch (err) {
@@ -149,11 +152,7 @@ copyTextareaBtn.addEventListener('click', function(event) {
 });
 
 	//OCULTAR KEYBOARD MOVIL ANDROID e iOS
-	
-var hide = document.getElementById('room-id');
-hide.onfocus = function(){
-  hideKeyboard();
-};
+
 
 
 function hideKeyboard() {
